@@ -1,0 +1,8 @@
+<div>
+  <mat-toolbar color="warn">
+    <span routerLink="/home" (click)="clickHome()">Garçom Virtual</span>
+    <span class="fill-remaining-space"></span>  
+    <app-login-button class="buttons" *ngIf="entrar" (click)="clickEntrar()" routerLink="/entrar" ></app-login-button>      
+    <app-be-a-partner-button class="buttons" *ngIf="cadastrar" (click)="clickCadastrar()" routerLink="/ser-parceiro"></app-be-a-partner-button>    
+  </mat-toolbar>
+</div>

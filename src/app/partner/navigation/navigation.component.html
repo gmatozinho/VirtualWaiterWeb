@@ -1,0 +1,30 @@
+<!-- <app-partner-toolbar></app-partner-toolbar> -->
+<div class="example-container" >
+  <mat-toolbar color="warn" class="example-toolbar">
+    <button mat-icon-button (click)="sidenavToogle()" [ngStyle]="{'display' : (screenWidth > 840) ? 'none' : 'block'}">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span (click)="titleClick()">Garçom Virtual</span>
+    <span class="fill-remaining-space"></span>
+    <app-logo-name-partner #logoName [logoEstablishment]="logo" [nameEstablishment]="name" (click)='editEstablishment()'></app-logo-name-partner>
+    <app-leave-button #sair (click)="logout()" class="buttons" ></app-leave-button>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'">
+      <div>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let button of navigationButtons">
+              <app-icon-button-menu routerLink="{{ button.Url }}" [buttonIcon]="button.Icon" [buttonText]="button.Text" (click)="sidenavToogleClose()"></app-icon-button-menu>
+            </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-sidenav>
+    <div >
+
+    </div>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

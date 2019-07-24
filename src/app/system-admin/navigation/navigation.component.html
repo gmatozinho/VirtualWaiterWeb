@@ -1,0 +1,17 @@
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav mode='side' opened>
+    <div>
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <app-icon-button-menu routerLink='parceiros' [buttonIcon]="buttonPartnerIcon" [buttonText]="buttonPartnerText"></app-icon-button-menu>  
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <app-icon-button-menu routerLink='planos' [buttonIcon]="buttonOthersIcon" [buttonText]="buttonOthersText"></app-icon-button-menu>  
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

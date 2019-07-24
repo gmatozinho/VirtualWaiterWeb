@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <app-simple-text-card class = "simple-card-left" [cardText]="firstCardMessage"></app-simple-text-card>
+</div>
+<div style="text-align:left">
+  <img width="300" alt="Angular Logo" src="https://image.flaticon.com/icons/png/512/10/10542.png">
+</div>
+<div class="row">
+  <div class="column">
+    <app-text-icon-card class="text-icon-card" [cardAvatar]="bottonCardAvatar1" [cardTitle]="bottonCardTitle1" [cardText]="bottonCardText1"  ></app-text-icon-card>
+  </div> 
+  <div class="column"> 
+    <app-text-icon-card class="text-icon-card" [cardAvatar]="bottonCardAvatar2" [cardTitle]="bottonCardTitle2" [cardText]="bottonCardText2"  ></app-text-icon-card>
+  </div> 
+  <div class="column"> 
+    <app-text-icon-card class="text-icon-card" [cardAvatar]="bottonCardAvatar3" [cardTitle]="bottonCardTitle3" [cardText]="bottonCardText3"  ></app-text-icon-card>
+  </div>  
+</div>
+<p>
+  Icon made by Freepik from www.flaticon.com 
+</p>
+<router-outlet></router-outlet>

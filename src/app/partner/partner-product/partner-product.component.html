@@ -1,0 +1,107 @@
+<div class='conteiner'>
+  <h1>
+    {{ title }}
+  </h1>
+  <mat-card class="product-register-card">
+    <form class="form" [formGroup]="productForm" (ngSubmit)="submit()">
+      <mat-card-content layout="column">
+
+        <div>
+          <mat-form-field class="inputs">
+            <input matInput formControlName="name" [formControl]="nameFormControl" placeholder="{{ inputPlaceholderName }}" required>
+            <mat-error *ngIf="nameFormControl.hasError('required')">
+              É <strong>necessário</strong> inserir um nome
+            </mat-error>
+          </mat-form-field> 
+        </div> 
+  
+        <div>
+          <mat-form-field class="inputs">
+            <input matInput formControlName="description" [formControl]="descriptionFormControl" placeholder="{{ inputPlaceholderDescription }}" required>
+            <mat-error *ngIf="descriptionFormControl.hasError('required')">
+              É <strong>necessário</strong> inserir uma descrição
+            </mat-error>
+          </mat-form-field> 
+        </div> 
+
+        <div>
+          <mat-form-field class="inputs">
+            <input matInput  formControlName="price" [formControl]="priceFormControl" placeholder="{{ inputPlaceholderPrice }}" 
+             required>
+            <mat-error *ngIf="priceFormControl.hasError('required')">
+              É <strong>necessário</strong> inserir um preço
+            </mat-error>
+          </mat-form-field> 
+        </div> 
+
+        <div>
+          <mat-form-field class="inputs">
+            <input matInput formControlName="preparationTime" [formControl]="preparationTimeFormControl" 
+            placeholder="{{ inputPlaceholderPreparationTime }}" required>
+            <mat-error *ngIf="preparationTimeFormControl.hasError('required')">
+              É <strong>necessário</strong> inserir um preço
+            </mat-error>
+          </mat-form-field> 
+        </div>
+
+        <div>
+          <mat-form-field class="inputs">
+            <mat-select matInput formControlName="session" [formControl]="sessionFormControl" 
+            placeholder="{{ inputPlaceholderSession }}" required ngDefaultControl>
+              <mat-option *ngFor="let option of sessions" [value]="option.id">
+                {{option.descricao}}
+              </mat-option>    
+            </mat-select>        
+            <mat-error *ngIf="sessionFormControl.hasError('required')">
+              É <strong>necessário</strong> selecionar uma seção
+            </mat-error>
+          </mat-form-field> 
+        </div>   
+        
+        <div>
+          <mat-checkbox color='primary' [(ngModel)]="onPromotion" [ngModelOptions]="{standalone: true}">Em Promoção</mat-checkbox>
+        </div>  
+
+        <div [hidden]='!onPromotion'>
+          <mat-form-field class="inputs">
+            <input matInput formControlName="promotionalDiscount" [formControl]="promotionalDiscountFormControl" 
+            placeholder="{{ inputPlaceholderPromotionalDiscount }}">
+          </mat-form-field> 
+        </div> 
+
+        
+        <div>
+          <mat-checkbox color='primary' [(ngModel)]="active" [ngModelOptions]="{standalone: true}">Ativo</mat-checkbox>
+        </div>
+
+        <div>
+              
+          <mat-label>{{ inputPlaceholderPhoto }}</mat-label>
+
+          <div class="logo">
+            
+            <img src="{{photoFormControl.value}}" alt="Preview Logo" height="200" width="200">
+            
+            <ngx-uploadcare-widget
+              images-only="true"
+              public-key="c9f1a1c5ba826b7a623b"
+              (on-upload-complete)="yourOnUploadHandler($event)">
+            </ngx-uploadcare-widget>
+
+          </div>
+
+          <mat-error *ngIf="photoFormControl.hasError('required')">
+            É <strong>necessário</strong> inserir uma foto
+          </mat-error>
+        </div>            
+          
+      </mat-card-content>   
+      <div>
+        <app-cancel-button class="buttons" routerLink="/parceiro/funcionarios"></app-cancel-button>
+        <app-confirm-form-button type="submit" class="buttons" [title]='buttonTitle'></app-confirm-form-button><!-- routerLink="../" -->
+      </div>
+      
+    </form>    
+  </mat-card>   
+  
+<div>

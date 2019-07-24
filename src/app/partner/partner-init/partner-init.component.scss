@@ -1,0 +1,40 @@
+.conteiner{
+    margin-left: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float three columns side by side */
+.column {
+    float: left;
+    width: 30%;
+    padding: 0 0;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+    margin: 0 0;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 1000px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}

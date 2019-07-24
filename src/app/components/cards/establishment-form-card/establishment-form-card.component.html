@@ -1,0 +1,134 @@
+<mat-card class="establishment-register-card">
+    <form class="form" [formGroup]="establishmentForm" >
+      <mat-card-content layout="column">
+
+          <div>
+              <mat-form-field class="inputs">
+                <input matInput formControlName="socialName" [formControl]="socialNameFormControl" placeholder="{{ inputPlaceholderSocialName }}" required>
+                <mat-error *ngIf="socialNameFormControl.hasError('required')">
+                  É <strong>necessário</strong> inserir sua Razão Social
+                </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="cnpj" [formControl]="cnpjFormControl" mask="00.000.000/0000-00" placeholder="{{ inputPlaceholderCnpj }}" required>
+              <mat-error *ngIf="(cnpjFormControl.hasError('minlength') || cnpjFormControl.hasError('maxlength')) && !cnpjFormControl.hasError('required')">
+                CNPJ <strong>incompleto</strong>
+              </mat-error>
+              <mat-error *ngIf="cnpjFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o CNPJ
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="name" [formControl]="nameFormControl" placeholder="{{ inputPlaceholderName }}" required>
+              <mat-error *ngIf="nameFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um nome
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="phone" [formControl]="phoneFormControl" mask="(00) 00000-0000" placeholder="{{ inputPlaceholderPhone }}" required>
+              <mat-error *ngIf="(phoneFormControl.hasError('minlength') || phoneFormControl.hasError('maxlength')) && !phoneFormControl.hasError('required')">
+                Telefone <strong>incompleto</strong>
+              </mat-error>
+              <mat-error *ngIf="phoneFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um telefone
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="neighborhood" [formControl]="neighborhoodFormControl" placeholder="{{ inputPlaceholderNeighborhood }}" required>
+              <mat-error *ngIf="neighborhoodFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o Bairro
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="city" [formControl]="cityFormControl" placeholder="{{ inputPlaceholderCity }}" required>
+              <mat-error *ngIf="cityFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir a Cidade
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <mat-label>{{ inputPlaceholderState }}</mat-label>
+              <mat-select matInput formControlName="state" [formControl]="stateFormControl" required ngDefaultControl>
+                <mat-option *ngFor="let uf of ufList" [value]="uf">
+                  {{uf}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="stateFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o Estado
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="street" [formControl]="streetFormControl" placeholder="{{ inputPlaceholderStreet }}" required>
+              <mat-error *ngIf="streetFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir a rua
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="cep" [formControl]="cepFormControl" mask="00000-000" placeholder="{{ inputPlaceholderCep }}" required>
+              <mat-error *ngIf="(cepFormControl.hasError('minlength') || cepFormControl.hasError('maxlength')) && !cepFormControl.hasError('required')">
+                CEP <strong>incompleto</strong>
+              </mat-error>
+              <mat-error *ngIf="cityFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o CEP
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="complement" [formControl]="complementFormControl" placeholder="{{ inputPlaceholderComplement }}">
+              <mat-error *ngIf="complementFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um complemento
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="number" [formControl]="numberFormControl" placeholder="{{ inputPlaceholderNumber }}" required>
+              <mat-error *ngIf="numberFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o Número
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <mat-select matInput formControlName="specialty" [formControl]="specialtyFormControl"
+              placeholder="{{ inputPlaceholderSpecialty }}" required ngDefaultControl>
+                <mat-option *ngFor="let option of specialtyOptions" [value]="option.id">
+                  {{option.descricao}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="specialtyFormControl.hasError('required')">
+                É <strong>necessário</strong> escolher uma especialidade
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+      </mat-card-content>
+    </form>
+  </mat-card>

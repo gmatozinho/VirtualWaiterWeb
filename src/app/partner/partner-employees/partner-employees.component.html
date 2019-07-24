@@ -1,0 +1,52 @@
+<div class='conteiner'>
+  <h1>
+    Funcionários
+  </h1>
+  <mat-card>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" >
+      <mat-label><mat-icon>search</mat-icon>Pesquisar</mat-label>
+    </mat-form-field>
+    <mat-label><mat-icon class='plus' routerLink='novo'>add</mat-icon></mat-label>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      </ng-container>
+
+      <!-- Cargo Column -->
+      <ng-container matColumnDef="cargo">
+        <th mat-header-cell *matHeaderCellDef> Cargo </th>
+        <td mat-cell *matCellDef="let element"> {{element.cargo}}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Editar Column -->
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)='editPage(element.id)'>mode_edit</mat-icon>
+        </td>
+      </ng-container>
+      
+      <!-- Delete Column -->
+      <ng-container matColumnDef="deletar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)='removerFuncionario(element.id, element.nome)' style='color:red'>delete</mat-icon> 
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+<div>

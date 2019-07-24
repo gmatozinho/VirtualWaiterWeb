@@ -1,0 +1,25 @@
+<div class='conteiner'>
+    <h1>
+      Cozinha
+    </h1>
+    <div class="column" *ngFor="let quadro of quadros">
+      <mat-card class='example-container'>
+        <mat-list>
+          <h3 mat-subheader class="list-subheader">{{ quadro.titulo }}</h3>
+          <mat-divider></mat-divider>
+          <div
+          cdkDropList
+          [id]="quadro.id"
+          #quadro.id="cdkDropList"
+          [cdkDropListData]="quadro.pedidos"
+          [cdkDropListConnectedTo]="quadrosId"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of quadro.pedidos" cdkDrag>
+              <app-list-card-kitchen-item  (click)="verObservacao(quadro.id,item.id)" [itemName]="item.nomeProduto" [itemTable]="item.mesa"></app-list-card-kitchen-item>              
+            </div>
+          </div>
+        </mat-list>
+      </mat-card>      
+    </div>
+</div>

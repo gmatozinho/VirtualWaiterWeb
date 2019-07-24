@@ -1,0 +1,63 @@
+<div class='conteiner'>
+  <h1>
+    Comanda Nº {{numeroComanda}}
+  </h1>
+  <h2>
+    Cliente: {{cliente}}    
+    <br>
+    Mesa: {{mesa}}
+  </h2>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" >
+        <mat-label><mat-icon>search</mat-icon>Pesquisar</mat-label>
+      </mat-form-field>
+      <!-- <mat-label><mat-icon class='plus' routerLink='novo'>add</mat-icon></mat-label> -->
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Produto Column -->
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+        </ng-container>
+
+        <!-- Quantidade Column -->
+        <ng-container matColumnDef="quantidade">
+          <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+        </ng-container>
+
+        <!-- ValorUnitario Column -->
+        <ng-container matColumnDef="valorUnitario">
+          <th mat-header-cell *matHeaderCellDef> Valor Unitário </th>
+          <td mat-cell *matCellDef="let element"> {{element.valorUnitario | currency:'BRL' }} </td>
+        </ng-container>
+
+        <!-- Total Column -->
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef> Total </th>
+          <td mat-cell *matCellDef="let element"> {{element.total | currency:'BRL'}} </td>
+        </ng-container>
+
+        <!-- Entregue Column -->
+        <ng-container matColumnDef="entregue">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">          
+            <mat-checkbox color='primary' (change)="delivered(element.id, element.entregue)" [(ngModel)]="element.entregue">Entregue</mat-checkbox>            
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class='novo-pedido' (click)='newOrder()'>Novo pedido</button>
+      <button mat-raised-button (click)='fecharComanda()'class='fechar-comanda'>Fechar Comanda</button>
+      <app-general-total-button [value]="total"></app-general-total-button>
+           
+    </mat-card-actions>
+  </mat-card>
+</div>

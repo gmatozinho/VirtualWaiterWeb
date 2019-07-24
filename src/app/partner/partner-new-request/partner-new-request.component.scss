@@ -1,0 +1,34 @@
+.conteiner{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Structure */
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 18px;
+    width: 40%;
+}
+
+p{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.buttons{
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.concluir-pedido{
+    background-color: green;
+    color: white; 
+}
+
+.cancelar-pedido{
+    background-color: red;
+    color: white;    
+}

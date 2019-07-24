@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Olá, {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Favor adicionar observação e quantidade desejada:</p>
+  <form class="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input name="quantity" #quantity="ngModel"  matInput [(ngModel)]="data.quantity" placeholder="Quantidade" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="observation" #observation="ngModel" matInput [(ngModel)]="data.observation" placeholder="Observacao">
+    </mat-form-field>   
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>Adicionar</button>
+    </div>
+  </form>
+</div>

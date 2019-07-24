@@ -1,0 +1,27 @@
+<div class="container">
+    <mat-horizontal-stepper linear class="row valign-wrapper" #stepper>
+      <mat-step [stepControl]="ownerForm" >          
+        <ng-template matStepLabel>Cadastro do Dono</ng-template>
+        <app-owner-form-card #owner></app-owner-form-card>
+        <div>
+          <button mat-raised-button class ="next-button" (click)="buildOwner()"  [disabled]="!ownerForm.valid" matStepperNext>Próximo</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="establishmentForm" >
+        <ng-template matStepLabel>Cadastro do Estabelecimento</ng-template>
+        <app-establishment-form-card #establishment></app-establishment-form-card>
+        <div>
+          <button mat-raised-button class ="back-button" matStepperPrevious>Voltar</button>
+          <button mat-raised-button class ="next-button" (click)="buildEstablishment()" [disabled]="!establishmentForm.valid" matStepperNext>Próximo</button>
+        </div>        
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Finalizado</ng-template>
+        Você Finalizou o cadastro de informações agora é só aguardar.
+        <div>
+          <button mat-button matStepperPrevious>Voltar</button>
+          <button mat-button (click)="register()" [disabled]="!ownerForm.valid && !establishmentForm.valid">Finalizar</button>
+        </div>
+      </mat-step>      
+    </mat-horizontal-stepper>
+</div>

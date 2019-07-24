@@ -1,0 +1,184 @@
+<div class='conteiner'>
+  <mat-card class="owner-register-card">    
+    <mat-card-content >
+      <div class="row">
+        <div class="column">      
+          <h1>
+            Dono
+          </h1>
+
+          <div>
+              <mat-form-field class="inputs">
+                <input matInput [formControl]="emailFormControl" placeholder="{{ inputPlaceholderEmail }}" readonly>
+                
+              </mat-form-field>
+          </div>             
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [formControl]="phoneFormControl" mask="(00) 00000-0000" placeholder="{{ inputPlaceholderPhone }}" readonly>
+              
+            </mat-form-field> 
+          </div>
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [formControl]="nameFormControl" placeholder="{{ inputPlaceholderName }}" readonly>
+              
+            </mat-form-field> 
+          </div> 
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [formControl]="lastnameFormControl" placeholder="{{ inputPlaceholderLastname }}" readonly>
+              
+            </mat-form-field> 
+          </div> 
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [formControl]="birthdayFormControl" placeholder="{{ inputPlaceholderBirthday }}" readonly>
+              
+            </mat-form-field> 
+          </div> 
+          
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [formControl]="cpfFormControl" mask="000.000.000-00" placeholder="{{ inputPlaceholderCpf }}" readonly>
+              
+            </mat-form-field> 
+          </div>   
+
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [formControl]="rgFormControl" mask="0.000.000" placeholder="{{ inputPlaceholderRg }}" readonly>
+              
+            </mat-form-field> 
+          </div>
+          
+          <div>
+            <mat-form-field class="inputs">
+              <mat-select matInput [formControl]="emitterFormControl" 
+              placeholder="{{ inputPlaceholderEmitter }}" readonly ngDefaultControl>
+                <mat-option *ngFor="let option of emittersOptions" [value]="option.value">
+                  {{option.name}}
+                </mat-option>    
+              </mat-select>        
+              
+            </mat-form-field> 
+          </div>      
+            
+            
+        
+          <div>
+              <button mat-raised-button class='active-form-button' (click)='activateOrDisable()'>{{buttonTitle}}</button>
+          </div>  
+        </div>
+
+        <div class="column">
+        
+          <h1>
+            Estabelecimento
+          </h1>     
+          <mat-form-field>
+            <input matInput [formControl]="socialNameFormControl" placeholder="{{ inputPlaceholderSocialName }}" readonly>
+                    
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="cnpjFormControl" mask="00.000.000/0000-00" placeholder="{{ inputPlaceholderCnpj }}" readonly>
+            
+          </mat-form-field> 
+          
+          <mat-form-field >
+            <input matInput [formControl]="establishmentNameFormControl" placeholder="{{ inputPlaceholderName }}" readonly>
+            
+          </mat-form-field> 
+
+          <mat-form-field >
+            <input matInput [formControl]="establishmentPhoneFormControl" mask="(00) 00000-0000" placeholder="{{ inputPlaceholderPhone }}" readonly>
+            
+          </mat-form-field> 
+
+          <mat-form-field>
+            <input matInput [formControl]="descriptionFormControl" placeholder="{{ inputPlaceholderDescription }}" readonly>
+            
+          </mat-form-field>
+
+          <mat-form-field> 
+              <input matInput [readonly]="true" [formControl]="averageRatingFormControl" placeholder="{{ inputPlaceholderAverageRating }}" readonly>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput [formControl]="workingScheduleFormControl" placeholder="{{ inputPlaceholderWorkingSchedule }}" readonly>
+            
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>{{ inputPlaceholderSpecialty }}</mat-label>
+            <mat-select matInput [formControl]="specialtyFormControl" readonly ngDefaultControl>
+              <mat-option *ngFor="let option of specialtyOptions" [value]="option.id">
+                {{option.descricao}}
+              </mat-option>    
+            </mat-select>              
+          </mat-form-field>              
+
+          <div>
+            
+              <mat-label>{{ inputPlaceholderLogo }}</mat-label>
+
+              <div class="logo">            
+                <img src="{{logoFormControl.value}}" alt="Preview Logo" height="200" width="200">
+              </div>
+          </div>
+            
+          <h3>
+            Endereço            
+          </h3>
+
+          <mat-form-field >
+            <input matInput [formControl]="neighborhoodFormControl" placeholder="{{ inputPlaceholderNeighborhood }}" readonly>
+            
+          </mat-form-field>         
+        
+          <mat-form-field >
+            <input matInput [formControl]="cityFormControl" placeholder="{{ inputPlaceholderCity }}" readonly>
+            
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>{{ inputPlaceholderState }}</mat-label>
+            <mat-select matInput [formControl]="stateFormControl" readonly ngDefaultControl>
+              <mat-option *ngFor="let uf of ufList" [value]="uf">
+                {{uf}}
+              </mat-option>    
+            </mat-select>     
+            
+          </mat-form-field> 
+
+          <mat-form-field >
+            <input matInput [formControl]="cepFormControl" mask="00000-000" placeholder="{{ inputPlaceholderCep }}" readonly>
+            
+          </mat-form-field>
+
+          <mat-form-field >
+            <input matInput [formControl]="streetFormControl" placeholder="{{ inputPlaceholderStreet }}" readonly>
+            
+          </mat-form-field> 
+
+          <mat-form-field >
+            <input matInput [formControl]="numberFormControl" placeholder="{{ inputPlaceholderNumber }}" readonly>
+            
+          </mat-form-field>             
+
+          <mat-form-field >
+            <input matInput [formControl]="complementFormControl" placeholder="{{ inputPlaceholderComplement }}" readonly>
+          </mat-form-field>  
+        </div> 
+      
+      </div>
+      
+    </mat-card-content>               
+  </mat-card>    
+  
+<div>

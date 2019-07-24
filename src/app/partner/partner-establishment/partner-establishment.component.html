@@ -1,0 +1,172 @@
+<div class='conteiner'>
+  <h1>
+      Informações Estabelecimento
+  </h1>
+  <mat-card>
+    <form [formGroup]="establishmentForm" (ngSubmit)="update()" >
+      <mat-card-content>
+        <div class="row">
+          <div class="column">
+            <h3>
+              Dados
+            </h3>
+            <mat-form-field>
+              <input matInput formControlName="socialName" [formControl]="socialNameFormControl" placeholder="{{ inputPlaceholderSocialName }}" required>
+              <mat-error *ngIf="formSubmitted && socialNameFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir sua Razão Social
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput formControlName="cnpj" [formControl]="cnpjFormControl" mask="00.000.000/0000-00" placeholder="{{ inputPlaceholderCnpj }}" required>
+              <mat-error *ngIf="(cnpjFormControl.hasError('minlength') || cnpjFormControl.hasError('maxlength')) && !cnpjFormControl.hasError('required')">
+                CNPJ <strong>incompleto</strong>
+              </mat-error>
+              <mat-error *ngIf="formSubmitted && cnpjFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o CNPJ
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="name" [formControl]="nameFormControl" placeholder="{{ inputPlaceholderName }}" required>
+              <mat-error *ngIf="formSubmitted && nameFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um nome
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="phone" [formControl]="phoneFormControl" mask="(00) 00000-0000" placeholder="{{ inputPlaceholderPhone }}" required>
+              <mat-error *ngIf="(phoneFormControl.hasError('minlength') || phoneFormControl.hasError('maxlength')) && !phoneFormControl.hasError('required')">
+                Telefone <strong>incompleto</strong>
+              </mat-error>
+              <mat-error *ngIf="formSubmitted && phoneFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um telefone
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput formControlName="description" [formControl]="descriptionFormControl" placeholder="{{ inputPlaceholderDescription }}" required>
+              <mat-error *ngIf="formSubmitted && descriptionFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir a descrição
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [readonly]="true" formControlName="averageRating" [formControl]="averageRatingFormControl" placeholder="{{ inputPlaceholderAverageRating }}">
+            </mat-form-field>
+
+            <!-- <mat-form-field>
+                <input matInput [readonly]="true" formControlName="active" [formControl]="activeFormControl" placeholder="{{ inputPlaceholderActive }}">
+            </mat-form-field> -->
+
+            <mat-form-field>
+              <input matInput formControlName="workingSchedule" [formControl]="workingScheduleFormControl" placeholder="{{ inputPlaceholderWorkingSchedule }}" required>
+              <mat-error *ngIf="formSubmitted && workingScheduleFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o horário de Funcionamento
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-label>{{ inputPlaceholderSpecialty }}</mat-label>
+              <mat-select matInput formControlName="specialty" [formControl]="specialtyFormControl" required ngDefaultControl>
+                <mat-option *ngFor="let option of specialtyOptions" [value]="option.id">
+                  {{option.descricao}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formSubmitted && specialtyFormControl.hasError('required')">
+                É <strong>necessário</strong> selecionar uma especialidade
+              </mat-error>
+            </mat-form-field>
+
+            <div>
+
+                <mat-label>{{ inputPlaceholderLogo }}</mat-label>
+
+                <div class="logo">
+
+                  <img src="{{logoFormControl.value}}" alt="Preview Logo" height="200" width="200">
+
+                  <ngx-uploadcare-widget
+                    images-only="true"
+                    public-key="c9f1a1c5ba826b7a623b"
+                    (on-upload-complete)="yourOnUploadHandler($event)">
+                  </ngx-uploadcare-widget>
+
+                </div>
+            </div>
+
+            <div>
+              <app-cancel-button class="buttons" routerLink="../inicio"></app-cancel-button>
+              <app-update-button class="buttons" type="submit" ></app-update-button><!-- routerLink="../inicio" -->
+            </div>
+          </div>
+
+          <div class="column">
+            <h3>
+              Endereço
+            </h3>
+
+            <mat-form-field >
+              <input matInput formControlName="neighborhood" [formControl]="neighborhoodFormControl" placeholder="{{ inputPlaceholderNeighborhood }}" required>
+              <mat-error *ngIf="formSubmitted && neighborhoodFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o Bairro
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="city" [formControl]="cityFormControl" placeholder="{{ inputPlaceholderCity }}" required>
+              <mat-error *ngIf="formSubmitted && cityFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir a Cidade
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-label>{{ inputPlaceholderState }}</mat-label>
+              <mat-select matInput formControlName="state" [formControl]="stateFormControl" required ngDefaultControl>
+                <mat-option *ngFor="let uf of ufList" [value]="uf">
+                  {{uf}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formSubmitted && stateFormControl.hasError('required')">
+                É <strong>necessário</strong> selecionar um Estado
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="cep" [formControl]="cepFormControl" mask="00000-000" placeholder="{{ inputPlaceholderCep }}" required>
+              <mat-error *ngIf="(cepFormControl.hasError('minlength') || cepFormControl.hasError('maxlength')) && !cepFormControl.hasError('required')">
+                CEP <strong>incompleto</strong>
+              </mat-error>
+              <mat-error *ngIf="formSubmitted && cityFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o CEP
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="street" [formControl]="streetFormControl" placeholder="{{ inputPlaceholderStreet }}" required>
+              <mat-error *ngIf="formSubmitted && streetFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir a rua
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="number" [formControl]="numberFormControl" placeholder="{{ inputPlaceholderNumber }}" required>
+              <mat-error *ngIf="formSubmitted && numberFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir o Número
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field >
+              <input matInput formControlName="complement" [formControl]="complementFormControl" placeholder="{{ inputPlaceholderComplement }}">
+              <mat-error *ngIf="formSubmitted && complementFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um complemento
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

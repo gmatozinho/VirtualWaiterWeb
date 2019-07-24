@@ -1,0 +1,69 @@
+.conteiner{
+  margin: 20px; 
+  height: 800px;
+}
+
+b{
+  font-size: 20px;
+}
+
+.p-unic{
+  font-size: 18px;
+  color: green;
+}
+
+.values {
+  font-size: 40px;
+  /* color: green */
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.neutral {
+  color: black;
+}
+
+.material-icons {
+  position: relative;
+  /* Adjust these values accordingly */
+  top: 5px;
+  font-size: 40px;
+  
+}
+
+.father{
+  background-color: rgb(230, 240, 236);
+  height: 800px;
+}
+
+.pedidos-abertos{
+  align-items: center;
+  text-align: center;
+  
+}
+
+.mais-vendidos{
+  width: 90%;
+  height: 90%;
+  margin: 10px;
+  text-align: center;
+}
+
+.vendas-mes{
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+
+.vendas-hoje{
+  width: 100%; 
+  margin: 10px;
+  text-align: center;
+}
+

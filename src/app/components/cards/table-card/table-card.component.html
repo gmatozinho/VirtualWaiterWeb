@@ -1,0 +1,17 @@
+<mat-card id="{{ id }}" [ngClass]="{ 'card-livre' : !mesaOcupada, 'card-ocupada' : mesaOcupada }">
+  <div>
+    <div class='title'>
+      <b>
+        Mesa {{ numero }}
+      </b>
+      <mat-icon (click) = "removeTable(this.id)" class='delete-icon'>delete</mat-icon>
+    </div>    
+    <p *ngIf="mesaOcupada" >Comanda: {{comanda.id}}</p>
+    <div>
+      <button mat-raised-button (click)="mesaOcupada ? showControl() : openControl()" [ngClass]="{ 'button-livre' : !mesaOcupada, 'button-ocupada' : mesaOcupada }" >
+        <mat-icon class='exibir-icon' >check_circle</mat-icon>{{textoBotao}}
+      </button>
+      <button mat-raised-button *ngIf="mesaOcupada" class='button-ocupada' (click) = "closeControl()"><mat-icon class='fechar-icon'>input</mat-icon>Fechar Conta</button>
+    </div>
+  </div>
+</mat-card>

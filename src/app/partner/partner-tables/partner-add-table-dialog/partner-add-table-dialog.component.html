@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{data.text}}</h1>
+<div mat-dialog-content>
+  <form class="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input name="numero" #numero="ngModel" matInput [(ngModel)]="data.numero" placeholder="Numero" required>
+      <mat-error *ngIf="numero.hasError('required')">
+        É <strong>necessário</strong> inserir um numero
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input name="codigo" #codigo="ngModel" matInput [(ngModel)]="data.codigo" placeholder="Codigo" required>
+      <mat-error *ngIf="codigo.hasError('required')">
+        É <strong>necessário</strong> inserir um codigo
+      </mat-error>
+    </mat-form-field>
+    
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>Confirmar</button><!-- [mat-dialog-close]="data.description" -->
+    </div>
+  </form>  
+</div>

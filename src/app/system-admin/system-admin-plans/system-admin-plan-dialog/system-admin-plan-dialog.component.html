@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <p>{{data.text}}</p>
+  <form class="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input name="nome" #nome="ngModel" matInput [(ngModel)]="data.plan.nome" placeholder="Nome" required>
+      <mat-error *ngIf="nome.hasError('required')">
+        É <strong>necessário</strong> inserir um nome
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="description" #description="ngModel" matInput [(ngModel)]="data.plan.descricao" placeholder="Descrição" required>
+      <mat-error *ngIf="description.hasError('required')">
+        É <strong>necessário</strong> inserir uma descrição
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="valor" #valor="ngModel" matInput [(ngModel)]="data.plan.valor" placeholder="Valor" required>
+      <mat-error *ngIf="valor.hasError('required')">
+        É <strong>necessário</strong> inserir um valor
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="duracao" #duracao="ngModel" matInput [(ngModel)]="data.plan.duracao" placeholder="Duração" required>
+      <mat-error *ngIf="duracao.hasError('required')">
+        É <strong>necessário</strong> inserir uma duracao em meses.
+      </mat-error>
+    </mat-form-field>
+    
+    <div mat-dialog-actions>
+      <button mat-button type="button" (click)="onCancelClick()">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>{{data.buttonText}}</button><!-- [mat-dialog-close]="data.description" -->
+    </div>
+  </form>  
+</div>

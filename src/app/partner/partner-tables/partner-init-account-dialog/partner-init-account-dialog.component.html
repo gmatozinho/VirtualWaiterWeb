@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Fechamento de Conta:</h1>
+<div mat-dialog-content>
+  <form class="form" (ngSubmit)="submit()">
+    <p>Total: {{data.total | currency:'BRL' }}</p>
+    <mat-form-field>
+      <mat-select matInput name="formapagamento" #formapagamento="ngModel" matInput [(ngModel)]="data.formapagamento" placeholder="Forma de pagamento" required>
+        <mat-option *ngFor="let option of paymentOptions" [value]="option.value">
+          {{option.name}}
+        </mat-option>    
+      </mat-select>     
+      <mat-error *ngIf="formapagamento.hasError('required')">
+        É <strong>necessário</strong> selecionar uma forma de pagamento
+      </mat-error>  
+    </mat-form-field>
+    
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>Confirmar</button><!-- [mat-dialog-close]="data.description" -->
+    </div>
+  </form>  
+</div>

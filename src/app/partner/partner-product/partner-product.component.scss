@@ -1,0 +1,43 @@
+.conteiner{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.product-register-card {
+    width: 35%;
+    background: white;
+    color: black ;
+    opacity: 70%;
+    padding: 20px;
+}
+
+.form {
+    min-width: 150px;
+    width: 100%;
+}
+
+
+.inputs {
+    width: 100%;
+}
+
+.checkbox-div{
+    display:inline
+}
+
+p.c { 
+    margin-left: 10px;
+    max-width: 500px;
+    display: inline-flex;
+}
+
+.logo {
+    margin-top: 10px;
+    /* height: 100px; */
+}
+
+ngx-uploadcare-widget {
+    margin-top:10px;
+    margin-bottom: 30px;
+    display: block
+}

@@ -1,0 +1,91 @@
+h1 {
+    margin: 10px;
+    color:white;
+    text-shadow: 1px 2px #000000;
+  }
+  .simple-card-left {
+    box-align:left;
+
+  }
+
+  #DivPartner {
+
+    text-align-last: center;
+
+  }
+
+  .simple-card-right {
+    box-align:right;
+
+  }
+  .text-icon-card {
+    padding: 20px;
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .rounded-text-icon-card {
+    padding: 20px;
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Float three columns side by side */
+    .column {
+      float: left;
+      width: 30%;
+      padding: 10px 10px;
+    }
+
+    /* Remove extra left and right margins, due to padding in columns */
+    .row {
+        margin: 0 0;
+      }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive columns - one column layout (vertical) on small screens */
+    @media screen and (max-width: 1200px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+    }
+    img {
+      margin-bottom: 0px;
+      max-width: 100%;
+      max-height: 100%
+    }
+    html, body { max-height: 100%; max-width: 100% }
+    body { margin: 10; font-family: Roboto, "Helvetica Neue", sans-serif;
+      background-size: 100%}
+
+    #wrapper .text {
+      position:relative;
+      top: 0px;
+      bottom:0px;
+      left:10px;
+      visibility:hidden;
+      }
+
+      #wrapper:hover .text {
+      top: 0px;
+      bottom:0px;
+      visibility:visible;
+      color: white;
+      }

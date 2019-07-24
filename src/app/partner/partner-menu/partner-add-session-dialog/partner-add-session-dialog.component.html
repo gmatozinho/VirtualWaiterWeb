@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <p>Insira um nome para a seção:</p>
+  <form class="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input name="description" #description="ngModel" matInput [(ngModel)]="data.description" required>
+      <mat-error *ngIf="description.hasError('required')">
+        É <strong>necessário</strong> inserir um nome
+      </mat-error>
+    </mat-form-field>
+    
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>{{data.buttonText}}</button><!-- [mat-dialog-close]="data.description" -->
+    </div>
+  </form>  
+</div>

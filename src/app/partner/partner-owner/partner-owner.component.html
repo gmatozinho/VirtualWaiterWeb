@@ -1,0 +1,116 @@
+<div class='conteiner'>
+  <h1>
+    Editar Informações do Dono
+  </h1>
+  <mat-card class="owner-register-card">
+    <form class="form" [formGroup]="ownerForm" (ngSubmit)="submit()">
+      <mat-card-content layout="column">
+  
+          <div>
+              <mat-form-field class="inputs">
+                <input matInput formControlName="email" [formControl]="emailFormControl" placeholder="{{ inputPlaceholderEmail }}" required>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Por favor insira um email válido
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  É <strong>necessário</strong> inserir um email
+                </mat-error>
+              </mat-form-field>
+          </div>             
+  
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="phone" [formControl]="phoneFormControl" mask="(00) 00000-0000" placeholder="{{ inputPlaceholderPhone }}" required>
+              <mat-error *ngIf="(phoneFormControl.hasError('minlength') || phoneFormControl.hasError('maxlength')) && !phoneFormControl.hasError('required')">
+                Telefone <strong>incompleto</strong>
+              </mat-error> 
+              <mat-error *ngIf="phoneFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um telefone
+              </mat-error>
+            </mat-form-field> 
+          </div>
+  
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="name" [formControl]="nameFormControl" placeholder="{{ inputPlaceholderName }}" required>
+              <mat-error *ngIf="nameFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um nome
+              </mat-error>
+            </mat-form-field> 
+          </div> 
+  
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="lastname" [formControl]="lastnameFormControl" placeholder="{{ inputPlaceholderLastname }}" required>
+              <mat-error *ngIf="lastnameFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um sobrenome
+              </mat-error>
+            </mat-form-field> 
+          </div> 
+  
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="myDatepicker" formControlName="birthday" 
+              [formControl]="birthdayFormControl" placeholder="{{ inputPlaceholderBirthday }}" required>
+              <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+              <mat-datepicker #myDatepicker></mat-datepicker>
+              <mat-error *ngIf="(birthdayFormControl.hasError('matDatepickerMin') || birthdayFormControl.hasError('matDatepickerFilter')  
+              || birthdayFormControl.hasError('matDatepickerMax')) && !birthdayFormControl.hasError('required')">
+                Data de Nascimento <strong>invalida</strong>
+              </mat-error> 
+              <mat-error *ngIf="birthdayFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir sua data de nascimento
+              </mat-error>
+            </mat-form-field> 
+          </div> 
+          
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="cpf" [formControl]="cpfFormControl" mask="000.000.000-00" placeholder="{{ inputPlaceholderCpf }}" required>
+              <mat-error *ngIf="(cpfFormControl.hasError('minlength') || cpfFormControl.hasError('maxlength')) && !cpfFormControl.hasError('required')">
+                CPF <strong>incompleto</strong>
+              </mat-error> 
+              <mat-error *ngIf="cpfFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um CPF
+              </mat-error>
+            </mat-form-field> 
+          </div>   
+  
+          <div>
+            <mat-form-field class="inputs">
+              <input matInput formControlName="rg" [formControl]="rgFormControl" mask="0.000.000" placeholder="{{ inputPlaceholderRg }}" required>
+              <mat-error *ngIf="(rgFormControl.hasError('minlength') || rgFormControl.hasError('maxlength')) && !rgFormControl.hasError('required')">
+                RG <strong>incompleto</strong>
+              </mat-error> 
+              <mat-error *ngIf="rgFormControl.hasError('required')">
+                É <strong>necessário</strong> inserir um RG
+              </mat-error>
+            </mat-form-field> 
+          </div>
+          
+          <div>
+            <mat-form-field class="inputs">
+              <mat-select matInput formControlName="emitter" [formControl]="emitterFormControl" 
+              placeholder="{{ inputPlaceholderEmitter }}" required ngDefaultControl>
+                <mat-option *ngFor="let option of emittersOptions" [value]="option.value">
+                  {{option.name}}
+                </mat-option>    
+              </mat-select>        
+              <mat-error *ngIf="emitterFormControl.hasError('required')">
+                É <strong>necessário</strong> selecionar um Orgão Emissor
+              </mat-error>
+            </mat-form-field> 
+          </div>        
+          
+      </mat-card-content>   
+      
+      <div>
+        <app-cancel-button class="buttons" routerLink="/parceiro/dashboard"></app-cancel-button>
+        <app-confirm-form-button type="submit" class="buttons" [title]='buttonTitle'></app-confirm-form-button><!-- routerLink="../" -->
+      </div>
+      
+    </form>    
+  </mat-card>   
+  
+  
+<div>

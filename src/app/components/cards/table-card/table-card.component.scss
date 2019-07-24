@@ -1,0 +1,58 @@
+b {
+    font-size: 20px;
+}
+
+.title {
+    margin-left: 10px;
+}
+
+p{
+    margin-bottom: 30px;    
+    margin-left: 10px;
+}
+
+mat-card{
+    height: 130px;
+    width: 280px;  
+}
+
+mat-icon {
+    margin-right: 2px;
+}
+
+mat-icon.exibir-icon {
+    position: relative;
+    color: green;
+    margin-bottom: 2px;
+}
+
+mat-icon.fechar-icon {
+    position: relative;
+    color: red;
+    margin-bottom: 2px;
+}
+
+.delete-icon {
+    position: relative;
+    top:5px;
+    font-size: 26px;
+    margin-left: 170px;
+}
+
+.card-livre {
+    background: rgb(94, 202, 5);    
+}
+
+.card-ocupada {
+    background: rgb(248, 41, 41);
+}
+
+.button-livre {
+    margin-top: 30px;
+    margin-left: 65px;
+}
+
+.button-ocupada {
+    margin-left: 2px;
+}
+

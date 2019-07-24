@@ -1,0 +1,26 @@
+<div class="conteiner">
+  <h1>
+    Seja Bem vindo
+  </h1>
+  <app-simple-text-card class = "simple-card-left" [cardText]="welcomeCardMessage"></app-simple-text-card>
+  
+  <div *ngIf="showPlans">
+    <h1>
+      Os Nossos Planos.
+    </h1>
+    <p>
+      Olá, observamos em nosso sistema que você ainda não escolheu seu plano, 
+      portanto terá acesso limitado ao nosso sistema, 
+      para ter acesso a todos os recursos, por favor selecione um plano
+    </p>
+    <div class="column" >
+      <app-text-icon-card class="text-icon-card" (click)="goToBasicUrl()" [cardAvatar]="basicPlanAvatar" [cardTitle]="basicPlanTitle" [cardText]="basicPlanText" ></app-text-icon-card>
+    </div>
+    <div class="column">
+      <app-text-icon-card class="text-icon-card" (click)="goToMediumUrl()" [cardAvatar]="intermediantePlanAvatar" [cardTitle]="intermediantePlanTitle" [cardText]="intermediantePlanText" ></app-text-icon-card>
+    </div>
+    <div class="column">
+      <app-text-icon-card class="text-icon-card" (click)="goToMasterUrl()" [cardAvatar]="masterPlanAvatar" [cardTitle]="masterPlanTitle" [cardText]="masterPlanText" ></app-text-icon-card>
+    </div>
+  </div>    
+</div>

@@ -1,0 +1,39 @@
+<div class='conteiner'>
+  <mat-card class="father">
+    <mat-card-header>
+      <app-logo-name-partner #logoName [logoEstablishment]="logo" [nameEstablishment]="name" ></app-logo-name-partner>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="5" rows="4" rowHeight="250px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1"> 
+          <mat-card class="pedidos-abertos">
+            <b>Pedidos Abertos</b>
+            <p class='p-unic'>{{pedidosAbertos}}<p>
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="3" > 
+          <mat-card class="mais-vendidos">    
+            <p-chart type="bar" [data]="data" [options]="options" ></p-chart>
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" > 
+          <mat-card class="vendas-mes">
+            <b>Vendas no Mês</b>            
+            <p [ngClass]="{ 'positive' : vendaMesValue > 0, 'negative' : vendaMesValue < 0, 'neutral' : vendaMesValue == 0 }" class='values'>
+            <i class="material-icons">{{vendaMesIcon}}</i> {{vendaMesValue | currency:'BRL'}}
+            </p>
+          </mat-card>
+        </mat-grid-tile>        
+        <mat-grid-tile [colspan]="1" [rowspan]="1" > 
+          <mat-card class="vendas-hoje">
+            <b>Vendas Hoje</b>
+            <p [ngClass]="{ 'positive' : vendaHojeValue > 0, 'negative' : vendaHojeValue < 0, 'neutral' : vendaHojeValue == 0 }"  class='values'>
+              <i class="material-icons">{{vendaHojeIcon}}</i> {{vendaHojeValue | currency:'BRL'}}
+            </p>
+            
+          </mat-card>
+        </mat-grid-tile>        
+      </mat-grid-list>    
+    </mat-card-content>
+  </mat-card>
+</div>

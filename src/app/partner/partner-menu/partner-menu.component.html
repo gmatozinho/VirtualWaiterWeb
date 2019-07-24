@@ -1,0 +1,96 @@
+<div class='conteiner'>
+  <h1>
+    Cardápio
+  </h1>
+  <mat-card>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" >
+      <mat-label><mat-icon>search</mat-icon>Pesquisar</mat-label>
+    </mat-form-field>
+    <mat-label>
+      <mat-checkbox color='primary' [(ngModel)]="filterActive" (change)="filterActiveF()">Ativo</mat-checkbox>
+      <mat-icon class='plus' (click)="addClick()">add</mat-icon>
+    </mat-label>
+    <mat-tab-group #tabGroup (selectedTabChange)="onTabChange()">
+      <mat-tab label="Produtos">
+        <table mat-table [dataSource]="productsDataSource" class="mat-elevation-z8">
+
+          <!-- Nome Column -->
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+          </ng-container>
+
+          <!-- Categoria Column -->
+          <ng-container matColumnDef="categoria">
+              <th mat-header-cell *matHeaderCellDef> Categoria </th>
+              <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+            </ng-container>
+
+          <!-- Preço Column -->
+          <ng-container matColumnDef="preco">
+            <th mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let element"> {{element.preco | currency:'BRL' }} </td>
+          </ng-container>
+
+          <!-- Foto Column -->
+          <ng-container matColumnDef="foto">
+            <th mat-header-cell *matHeaderCellDef> Foto </th>
+            <td mat-cell *matCellDef="let element">
+              <img class="img-valign" src="{{element.foto}}" alt="image" height="42" width="42">
+            </td>
+          </ng-container>
+
+          <!-- Ativo Column -->
+          <ng-container matColumnDef="ativo">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-checkbox color='primary' [(ngModel)]="element.ativo" (change)="changeProduct()">Ativo</mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Editar Column -->
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon (click)='editProductPage(element.id, element.secao)'>mode_edit</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="productsDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: productsDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+      <mat-tab label="Seções">
+        <table mat-table [dataSource]="sessionsDataSource" class="mat-elevation-z8">
+
+          <!-- Descrição Column -->
+          <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef> Descrição </th>
+            <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+          </ng-container>
+
+          <!-- Ativo Column -->
+          <ng-container matColumnDef="ativo">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-checkbox color='primary' [(ngModel)]="element.ativo" (change)="changeSession()">Ativo</mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Editar Column -->
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon (click)='editSession(element.id)'>mode_edit</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="sessionsDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: sessionsDisplayedColumns;"></tr>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+    <button mat-raised-button class = 'save-button' *ngIf="checkboxChanged" (click)='save()'>Salvar</button>
+  </mat-card>
+<div>

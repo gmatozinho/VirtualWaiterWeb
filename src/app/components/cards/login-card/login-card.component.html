@@ -1,0 +1,36 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>{{cardTitle}}</mat-card-title>
+  </mat-card-header>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-card-content layout="column">          
+      <div>
+        <mat-form-field class="inputs">
+          <input matInput formControlName="email" [formControl]="emailFormControl" placeholder="Email" 
+                  [errorStateMatcher]="matcher">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Por favor insira um email válido
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            É <strong>necessário</strong> inserir um email
+          </mat-error>
+        </mat-form-field>
+      </div> 
+      <div>   
+        <mat-form-field class="inputs">
+          <input matInput formControlName="password" [formControl]="passwordFormControl" placeholder="{{ inputPlaceholderPassword }}" 
+          [type]="hide ? 'password' : 'text'" >
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>    
+          <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
+            Sua senha precisao ter ao menos <strong>8 caracteres</strong>
+          </mat-error>           
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            É <strong>necessário</strong> inserir uma senha
+          </mat-error>               
+        </mat-form-field>
+      </div>
+    </mat-card-content>    
+    <app-login-button type="submit" ></app-login-button> 
+    <app-forgot-password-button  class="buttons" routerLink="/redefinir-senha" routerLinkActive="active" ></app-forgot-password-button>   
+  </form>  
+</mat-card>

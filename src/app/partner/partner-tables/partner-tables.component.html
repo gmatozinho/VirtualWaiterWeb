@@ -1,0 +1,18 @@
+<div class='conteiner'>
+  <h1>
+    Mesas
+  </h1>
+  <mat-card>
+    <div>
+      <app-search-input [options]='options'></app-search-input>    
+      <mat-label><mat-icon class='plus' (click)= "addTable()">add</mat-icon></mat-label>
+    </div>
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let table of tables">
+        <app-table-card (remove)="removeTable($event)" (close)="fecharComanda($event)"
+         [id] = "table.id" [numero] = "table.numero" [comandas] = "table.comandas" 
+         [enumestadomesa] = "table.enumestadomesa"></app-table-card>              
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+<div>

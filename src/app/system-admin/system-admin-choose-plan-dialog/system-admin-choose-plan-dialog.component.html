@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Escolha um plano:</h1>
+<div mat-dialog-content>
+  <form class="form" (ngSubmit)="submit()">
+
+    <mat-form-field>
+      <mat-select matInput name="plan" #plan="ngModel" matInput [(ngModel)]="data.planId" placeholder="Plano" required>
+        <mat-option *ngFor="let option of data.plans" [value]="option.id">
+          {{option.nome}}
+        </mat-option>    
+      </mat-select>     
+      <mat-error *ngIf="plan.hasError('required')">
+        É <strong>necessário</strong> selecionar um plano
+      </mat-error>    
+    </mat-form-field>  
+    
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>Confirmar</button><!-- [mat-dialog-close]="data.description" -->
+    </div>
+  </form>  
+</div>

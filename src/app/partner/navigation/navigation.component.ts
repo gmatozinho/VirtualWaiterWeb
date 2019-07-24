@@ -16,7 +16,7 @@ export interface ButtonsData {
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: any;
+  @ViewChild('sidenav', { static: true }) sidenav: any;
 
   currentUser: CurrentUser;
   toggled = false;

@@ -28,7 +28,7 @@ export interface Produto {
 })
 export class PartnerMenuComponent implements OnInit {
 
-  @ViewChild('tabGroup') tabGroup: { selectedIndex: number; };
+  @ViewChild('tabGroup', { static: true }) tabGroup: { selectedIndex: number; };
   filterActive = true;
   sessionDescription: string;
   sessions: Session[] = [];

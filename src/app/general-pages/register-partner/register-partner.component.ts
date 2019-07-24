@@ -21,8 +21,8 @@ import { Menu } from 'src/app/models/Menu';
 export class RegisterPartnerComponent implements OnInit {
   isLinear = true;
 
-  @ViewChild(OwnerFormCardComponent) ownerFormCard: OwnerFormCardComponent;
-  @ViewChild(EstablishmentFormCardComponent) establishmentFormCard: EstablishmentFormCardComponent;
+  @ViewChild(OwnerFormCardComponent, { static: true }) ownerFormCard: OwnerFormCardComponent;
+  @ViewChild(EstablishmentFormCardComponent, { static: true }) establishmentFormCard: EstablishmentFormCardComponent;
 
   ownerForm: FormGroup;
   establishmentForm: FormGroup;

@@ -22,7 +22,7 @@ export class TableCardComponent implements OnInit {
   @Input() comandas: Control[];
   @Input() enumestadomesa: EnumEstadoMesa;
   @Output() remove: EventEmitter<object> = new EventEmitter();
-  @Output() close: EventEmitter<object> = new EventEmitter();
+  @Output() closeTable: EventEmitter<object> = new EventEmitter();
 
   textoBotao: string;
   mesaOcupada: boolean;
@@ -56,7 +56,7 @@ export class TableCardComponent implements OnInit {
   }
 
   closeControl(): void {
-    this.close.emit({comanda: this.comanda, mesa: this.id});
+    this.closeTable.emit({comanda: this.comanda, mesa: this.id});
   }
 
   openControl() {

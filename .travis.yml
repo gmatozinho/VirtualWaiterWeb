@@ -12,16 +12,16 @@ script:
   #- ng test
   - npm run buildprod
 
-deploy:
-      - provider: codedeploy
-        revision_type: github
-        access_key_id: AKIAIZDCWAXTXNJ7VIKQ
-        secret_access_key: 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
-        application: "VirtualWaiterWeb"
-        deployment_group: "Web"
-        region: "sa-east-1"
-        on:
-          branch: master
+#deploy:
+#      - provider: codedeploy
+#        revision_type: github
+#        access_key_id: AKIAIZDCWAXTXNJ7VIKQ
+#       secret_access_key: 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
+#        application: "VirtualWaiterWeb"
+#        deployment_group: "Web"
+#        region: "sa-east-1"
+#        on:
+#          branch: master
         
 notifications:
   slack: teamegoworkspace:p3F3CnTCCEO62Q7bQw6MwjjP

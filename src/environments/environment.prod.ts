@@ -10,5 +10,5 @@ export const environment = {
     appId: '1:25596833522:web:cc9c32c23bc6ede9'
   },
   // URL of production API
-  apiUrl: 'http://ec2-18-231-198-246.sa-east-1.compute.amazonaws.com/api'
+  apiUrl: 'http://ec2-18-231-198-246.sa-east-1.compute.amazonaws.com:3000/api'
 };

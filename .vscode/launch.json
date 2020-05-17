@@ -14,12 +14,6 @@
                 "webRoot": "${workspaceRoot}",
                 "webpack:/*": "${workspaceRoot}/*"
             }
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Run Node",
-            "program": "${workspaceFolder}\\build\\app.js"
         }
     ]
 }

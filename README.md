@@ -1,6 +1,6 @@
 # VirtualWaiterWeb
 
-## Repository containing the code of the VirtualWaiter webApp: <https://virtual-waiter-c6d42.web.app/>
+## Repository containing the code of the [VirtualWaiter webApp](https://virtual-waiter-c6d42.web.app/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 
@@ -20,4 +20,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## This project was deployed using the firebase cli, follow the steps: <https://alligator.io/angular/deploying-angular-app-to-firebase/>
+## This project was deployed using the firebase cli, follow this [steps](https://alligator.io/angular/deploying-angular-app-to-firebase/)

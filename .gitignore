@@ -3,6 +3,7 @@
 .firebase/
 .firebaserc
 src/environments
+/public
 # compiled output
 /dist
 /tmp
